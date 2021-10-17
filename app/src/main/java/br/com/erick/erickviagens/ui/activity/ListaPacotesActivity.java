@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import br.com.erick.erickviagens.R;
+
 public class ListaPacotesActivity extends AppCompatActivity {
 
     @Override
