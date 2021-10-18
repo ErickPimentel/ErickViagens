@@ -10,7 +10,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 import br.com.erick.erickviagens.R;
 import br.com.erick.erickviagens.model.Pacote;
@@ -56,10 +60,21 @@ public class ListaPacotesAdapter extends BaseAdapter {
         imagem.setImageDrawable(drawableImagemPacote);
 
         TextView dias = viewCriada.findViewById(R.id.item_pacote_dias);
-        dias.setText(pacote.getDias() + " dias");
+        String diasEmTexto = "";
+        int quantidadeDeDias = pacote.getDias();
+        if (quantidadeDeDias > 1){
+            diasEmTexto = quantidadeDeDias + " dias";
+        }else{
+            diasEmTexto = quantidadeDeDias + " dia";
+        }
+        dias.setText(diasEmTexto);
 
         TextView preco = viewCriada.findViewById(R.id.item_pacote_preco);
-        preco.setText(pacote.getPreco().toString());
+        NumberFormat formatoBrasileiro = DecimalFormat.getCurrencyInstance(new Locale("pt", "br"));
+        BigDecimal precoDoPacote = pacote.getPreco();
+        String moedaBrasileira = formatoBrasileiro.format(precoDoPacote);
+
+        preco.setText(moedaBrasileira);
 
         return viewCriada;
     }
