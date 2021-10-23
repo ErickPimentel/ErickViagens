@@ -1,17 +1,14 @@
 package br.com.erick.erickviagens.ui.activity;
 
+import static br.com.erick.erickviagens.ui.activity.PacoteActivityConstantes.CHAVE_PACOTE;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.io.Serializable;
-import java.math.BigDecimal;
 
 import br.com.erick.erickviagens.R;
 import br.com.erick.erickviagens.model.Pacote;
@@ -27,19 +24,25 @@ public class ResumoCompraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumo_compra);
-
         setTitle(TITULO_APPBAR);
+        carregaPacoteRecebido();
 
+    }
+
+    private void carregaPacoteRecebido() {
         Intent intent = getIntent();
-        if(intent.hasExtra("pacote")){
-            Pacote pacote = (Pacote) intent.getSerializableExtra("pacote");
+        if(intent.hasExtra(CHAVE_PACOTE)){
+            Pacote pacote = (Pacote) intent.getSerializableExtra(CHAVE_PACOTE);
 
-            mostraLocal(pacote);
-            mostraImagem(pacote);
-            mostraData(pacote);
-            mostraPreco(pacote);
+            inicializaCampos(pacote);
         }
+    }
 
+    private void inicializaCampos(Pacote pacote) {
+        mostraLocal(pacote);
+        mostraImagem(pacote);
+        mostraData(pacote);
+        mostraPreco(pacote);
     }
 
     private void mostraPreco(Pacote pacote) {

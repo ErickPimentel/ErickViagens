@@ -1,5 +1,7 @@
 package br.com.erick.erickviagens.ui.activity;
 
+import static br.com.erick.erickviagens.ui.activity.PacoteActivityConstantes.CHAVE_PACOTE;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -34,17 +36,18 @@ public class ListaPacotesActivity extends AppCompatActivity {
         ListView listaDePacotes = findViewById(R.id.lista_pacotes_listview);
         final List<Pacote> pacotes = new PacoteDAO().lista();
         listaDePacotes.setAdapter(new ListaPacotesAdapter(pacotes, this));
-
         listaDePacotes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int posicao, long id) {
-
-                Pacote pacoteClicado = pacotes.get(posicao);
-
-                Intent intent = new Intent(ListaPacotesActivity.this, ResumoPacoteActivity.class);
-                intent.putExtra("pacote", pacoteClicado);
-                startActivity(intent);
+                vaiParaResumoPacote(posicao, pacotes);
             }
         });
+    }
+
+    private void vaiParaResumoPacote(int posicao, List<Pacote> pacotes) {
+        Pacote pacoteClicado = pacotes.get(posicao);
+        Intent intent = new Intent(ListaPacotesActivity.this, ResumoPacoteActivity.class);
+        intent.putExtra(CHAVE_PACOTE, pacoteClicado);
+        startActivity(intent);
     }
 }
