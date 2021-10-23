@@ -16,4 +16,7 @@
     <string name="finalizar_compra">Finalizar Compra</string>
     <string name="ano_cartao">AA</string>
     <string name="preco_pagamento">R$ 421,50</string>
+    <string name="parabens">Parabéns!</string>
+    <string name="compra_realizada">Compra realizada com sucesso :)</string>
+    <string name="confira_resumo">Confira o resumo da compra:</string>
 </resources>
