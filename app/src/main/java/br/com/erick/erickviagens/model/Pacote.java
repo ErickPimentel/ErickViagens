@@ -1,8 +1,10 @@
 package br.com.erick.erickviagens.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Pacote{
+//A interface Serializable serve para mandar um pacote de uma activity para outra activity
+public class Pacote implements Serializable {
 
     private final String local;
     private final String imagem;
