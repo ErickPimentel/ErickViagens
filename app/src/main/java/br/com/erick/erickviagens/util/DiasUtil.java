@@ -15,6 +15,7 @@ public class DiasUtil {
             return quantidadeDeDias + PLURAL;
         }
         return quantidadeDeDias + SINGULAR;
-
     }
+
+
 }
